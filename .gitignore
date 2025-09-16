@@ -1,0 +1,49 @@
+## Archivos de compilación
+bin/
+obj/
+out/
+
+## Archivos generados por Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+*.ncb
+*.aps
+*.log
+*.vspscc
+*.vssscc
+
+## Configuración de Visual Studio Code
+.vscode/
+
+## Paquetes NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+## Archivos temporales y logs
+*.tmp
+*.temp
+*.log
+*.cache
+
+## Archivos de test y cobertura
+*.coverage
+*.coveragexml
+TestResults/
+*.trx
+
+## Configuración de Rider/JetBrains
+.idea/
+*.sln.iml
+
+## Archivos de sistema
+Thumbs.db
+Desktop.ini
+*.DS_Store
+
+## Publicación y despliegue
+publish/
