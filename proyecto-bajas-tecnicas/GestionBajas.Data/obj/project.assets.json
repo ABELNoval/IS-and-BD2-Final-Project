@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "GestionBajas.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/GestionBajas.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GestionBajas.Models.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GestionBajas.Models/1.0.0": {
+      "type": "project",
+      "path": "../GestionBajas.Models/GestionBajas.Models.csproj",
+      "msbuildProject": "../GestionBajas.Models/GestionBajas.Models.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "GestionBajas.Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Admin\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Data\\GestionBajas.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Data\\GestionBajas.Data.csproj",
       "projectName": "GestionBajas.Data",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Data\\GestionBajas.Data.csproj",
+      "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Data\\GestionBajas.Data.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Data\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -33,7 +52,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\GestionBajas.Models.csproj": {
+              "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\GestionBajas.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

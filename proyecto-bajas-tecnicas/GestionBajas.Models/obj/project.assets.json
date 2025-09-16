@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\GestionBajas.Models.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\GestionBajas.Models.csproj",
       "projectName": "GestionBajas.Models",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\GestionBajas.Models.csproj",
+      "projectPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\GestionBajas.Models.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Escuela\\Tercer Año\\Primer Semestre\\Asignaturas\\Proyecto BD2 y IS\\IS-and-BD2-Final-Project\\proyecto-bajas-tecnicas\\GestionBajas.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
