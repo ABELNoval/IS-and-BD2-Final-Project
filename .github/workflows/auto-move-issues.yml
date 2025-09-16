@@ -23,6 +23,9 @@ jobs:
           ISSUE=$(echo "${{ github.event.head_commit.message }}" | grep -o '#[0-9]\+' | head -1 | tr -d '#')
           if [ -n "$ISSUE" ]; then
             echo "ISSUE=$ISSUE" >> $GITHUB_ENV
+            echo "Commit detectado con Issue #$ISSUE"
+          else
+            echo "No se detectó ningún Issue en el commit."
           fi
 
       - name: Mover Issue a In Progress
@@ -31,26 +34,29 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const issue_number = process.env.ISSUE;
-
-            // IDs reales de tu Project v2
+            const issue_number = parseInt(process.env.ISSUE);
             const projectId = "PVT_kwHOCf1UGM4BDHWW"; // PROJECT_ID
             const fieldId = "PVTSSF_lAHOCf1UGM4BDHWWzg1II50"; // FIELD_ID de Status
             const inProgressId = "47fc9ee4"; // VALUE_ID de "In progress"
 
-            console.log(`Detectado Issue #${issue_number}, buscando en el Project...`);
+            console.log(`Detectado Issue #${issue_number}, buscando en Project V2 ID ${projectId}...`);
 
-            // 1. Buscar el itemId de ese Issue dentro del Project
-            const query = `
-              query($owner: String!, $repo: String!, $issue: Int!) {
-                repository(owner: $owner, name: $repo) {
-                  issue(number: $issue) {
-                    projectItems(first: 10) {
+            // 1. Buscar todos los items del Project
+            const queryItems = `
+              query($projectId: ID!, $cursor: String) {
+                node(id: $projectId) {
+                  ... on ProjectV2 {
+                    items(first: 50, after: $cursor) {
+                      pageInfo {
+                        hasNextPage
+                        endCursor
+                      }
                       nodes {
                         id
-                        project {
-                          id
-                          title
+                        content {
+                          ... on Issue {
+                            number
+                          }
                         }
                       }
                     }
@@ -58,19 +64,33 @@ jobs:
                 }
               }
             `;
-            const vars = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue: parseInt(issue_number)
-            };
-            const res = await github.graphql(query, vars);
 
-            if (res.repository.issue.projectItems.nodes.length === 0) {
-              console.log("⚠️ El Issue no está en ningún Project, no se mueve.");
+            let itemId = null;
+            let cursor = null;
+            let hasNextPage = true;
+
+            while (hasNextPage) {
+              const res = await github.graphql(queryItems, { projectId, cursor });
+              const items = res.node.items.nodes;
+
+              for (const item of items) {
+                if (item.content && item.content.number === issue_number) {
+                  itemId = item.id;
+                  break;
+                }
+              }
+
+              hasNextPage = res.node.items.pageInfo.hasNextPage;
+              cursor = res.node.items.pageInfo.endCursor;
+
+              if (itemId) break;
+            }
+
+            if (!itemId) {
+              console.log(`⚠️ No se encontró el Issue #${issue_number} en el Project V2.`);
               return;
             }
 
-            const itemId = res.repository.issue.projectItems.nodes[0].id;
             console.log(`Item encontrado en Project con ID: ${itemId}`);
 
             // 2. Mutación para moverlo a In Progress
@@ -86,11 +106,13 @@ jobs:
                 }
               }
             `;
-            await github.graphql(mutation, {
-              projectId: projectId,
-              itemId: itemId,
-              fieldId: fieldId,
+
+            const mutationRes = await github.graphql(mutation, {
+              projectId,
+              itemId,
+              fieldId,
               valueId: inProgressId
             });
 
             console.log(`✅ Issue #${issue_number} movido a In Progress con éxito`);
+            console.log("Resultado de la mutación:", JSON.stringify(mutationRes, null, 2));
