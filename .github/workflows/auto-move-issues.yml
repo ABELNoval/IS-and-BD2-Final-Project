@@ -32,7 +32,7 @@ jobs:
         if: env.ISSUE != ''
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const issue_number = parseInt(process.env.ISSUE);
             const projectId = "PVT_kwHOCf1UGM4BDHWW"; // PROJECT_ID
